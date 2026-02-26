@@ -1,10 +1,11 @@
 const { signin, registerEmployee, signout, sendOTP, verifyOTP, forgetPassword, changePassword } = require("../controllers/auth.controllers.js")
+const { adminProtect } = require("../middlewares/auth.middlewares.js")
 
 const router = require("express").Router()
 
 router
     .post("/signin", signin)
-    .post("/register-employee", registerEmployee)
+    .post("/register-employee", adminProtect, registerEmployee)
     .post("/signout", signout)
     .post("/send-otp", sendOTP)
     .post("/verify-otp", verifyOTP)
