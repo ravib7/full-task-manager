@@ -4,12 +4,15 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const { protect } = require("./middlewares/auth.middlewares.js")
+const { FRONTEND_URL } = require("./utils/config.js")
 
 const app = express()
 
 mongoose.connect(process.env.MONGO_URL)
 
 app.use(express.json())
+
+app.use(cors({ origin: FRONTEND_URL, credentials: true }))
 
 app.use(cookieParser())
 
@@ -26,6 +29,7 @@ mongoose.connection.once("open", () => {
     app.listen(process.env.PORT, () => {
         console.log("server running")
         console.log(`node: ${process.env.NODE_ENV}`)
+        console.log(`cors allowed: ${FRONTEND_URL}`)
     })
 })
 

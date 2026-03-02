@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const AdminNavbar = () => {
@@ -9,11 +10,10 @@ const AdminNavbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <a className="nav-link active" href="#">Home</a>
-                        <a className="nav-link active" href="#">Pricing</a>
-                        <a className="nav-link active" href="#">Features</a>
-                        <a className="nav-link active" href="#">Features</a>
+                    <div className="navbar-nav ms-auto gap-3">
+                        <Link className="nav-link active" href="/admin">Dashboard</Link>
+                        <Link className="nav-link active" href="/admin/employee">Employee</Link>
+                        <Link className="nav-link active" href="/admin/todo">Todos</Link>
                     </div>
                 </div>
             </div>

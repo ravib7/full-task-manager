@@ -1,55 +1,58 @@
 export type SIGNIN_REQUEST = {
-    email: String,
-    password: String,
+    email: string,
+    password: string,
 }
+
 export type SIGNIN_RESPONSE = {
-    message: String,
+    message: string,
     result: {
-        name: String,
-        email: String,
-        mobile: String,
-        profilePic: String,
-        _id: String,
-        role: String,
+        name: string,
+        email: string,
+        mobile: string,
+        profilePic: string,
+        _id: string,
+        role: string,
     }
 }
+
 export type REGISTER_EMPLOYEE_REQUEST = {
-    name: String,
-    email: String,
-    mobile: String,
+    name: string,
+    email: string,
+    mobile: string,
 }
+
 export type REGISTER_EMPLOYEE_RESPONSE = {
-    message: String
+    message: string
 }
 
 
 export type SEND_OTP_REQUEST = {
-    username: String,
+    username: string,
 }
 export type SEND_OTP_RESPONSE = {
-    message: String
+    message: string
 }
 
 export type VERIFY_OTP_REQUEST = {
-    username: String,
-    otp: String,
+    username: string,
+    otp: string,
 }
 export type VERIFY_OTP_RESPONSE = {
-    message: String
+    message: string
 }
 
 
 export type FORGET_PASSWORD_REQUEST = {
-    username: String,
+    username: string,
 }
 export type FORGET_PASSWORD_RESPONSE = {
-    message: String
+    message: string
 }
 
 export type CHANGE_PASSWORD_REQUEST = {
-    password: String,
-    token: String,
+    password: string,
+    token: string,
 }
 export type CHANGE_PASSWORD_RESPONSE = {
-    message: String
+    message: string
 }
