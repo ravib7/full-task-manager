@@ -25,7 +25,7 @@ exports.toggleTodoStatus = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
     try {
-        const result = await User.findById(req.user).select("name email mobile role profilePic")
+        const result = await User.findById(req.user).select("name email mobile role profilePic active")
         res.status(200).json({ message: "profile fetch success", result })
     } catch (error) {
         console.log(error)

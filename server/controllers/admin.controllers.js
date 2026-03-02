@@ -1,5 +1,7 @@
+const { default: isEmail } = require("validator/lib/isEmail")
 const Task = require("../models/Task")
 const User = require("../models/User")
+const { isMongoId, isMobilePhone, isEmpty } = require("validator")
 
 exports.getAllEmployees = async (req, res) => {
     try {
@@ -14,16 +16,28 @@ exports.getAllEmployees = async (req, res) => {
 exports.updateEmployee = async (req, res) => {
     try {
         const { eid } = req.params
+
+        if (isMongoId(eid)) {
+            return res.status(400).json({ message: "invalid id" })
+        }
+
         let obj = {}
+
         const { name, email, mobile } = req.body
 
         if (name) {
             obj = { ...obj, name: name }
         }
         if (email) {
+            if (!isEmail(email)) {
+                return res.status(400).json({ message: "invalid email" })
+            }
             obj = { ...obj, email }
         }
         if (mobile) {
+            if (!isMobilePhone(mobile, "en-IN")) {
+                return res.status(400).json({ message: "invalid email" })
+            }
             obj = { ...obj, mobile }
         }
 
