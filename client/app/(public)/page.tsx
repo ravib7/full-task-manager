@@ -19,7 +19,7 @@ const Login = () => {
         password: z.string().min(1),
     }) satisfies z.ZodType<SIGNIN_REQUEST>
 
-    const { handleSubmit, register, reset, formState: { errors } } = useForm<SIGNIN_REQUEST>({
+    const { handleSubmit, register, reset, formState: { errors, touchedFields } } = useForm<SIGNIN_REQUEST>({
         defaultValues: {
             email: "",
             password: ""
@@ -50,8 +50,8 @@ const Login = () => {
 
     const handleClasses = (key: keyof SIGNIN_REQUEST) => clsx({
         "form-control my-2": true,
-        "is-invalid": errors && errors[key],
-        "is-valid": errors && !errors[key],
+        "is-invalid": errors[key],
+        "is-valid": touchedFields[key] && !errors[key],
     })
 
     return <>

@@ -44,7 +44,7 @@ export const adminApi = createApi({
             }),
 
             deleteEmployee: builder.mutation<COMMON_RESPONSE, DELETE_EMPLOYEE_REQUEST>({
-                query: _id => {
+                query: ({ _id }) => {
                     return {
                         url: "/delete-employee/" + _id,
                         method: "DELETE",
@@ -65,7 +65,7 @@ export const adminApi = createApi({
             }),
 
             removeEmployee: builder.mutation<COMMON_RESPONSE, REMOVE_EMPLOYEE_REQUEST>({
-                query: _id => {
+                query: ({ _id }) => {
                     return {
                         url: "/remove/" + _id,
                         method: "DELETE",
@@ -86,7 +86,7 @@ export const adminApi = createApi({
             }),
 
             todoRead: builder.query<TODO_READ_RESPONSE, void>({
-                query: todoData => {
+                query: () => {
                     return {
                         url: "/todo",
                         method: "GET",

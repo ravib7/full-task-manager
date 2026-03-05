@@ -121,7 +121,7 @@ exports.createTask = async (req, res) => {
 
 exports.readTask = async (req, res) => {
     try {
-        const result = await Task.find()
+        const result = await Task.find().populate("employee", "_id name mobile email")
         res.status(200).json({ message: "task read success", result })
     } catch (error) {
         console.log(error)
